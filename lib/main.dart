@@ -36,9 +36,9 @@ class Body extends StatelessWidget {
             top: topCardHeight + 4,
             bottom: fabPadding,
           ),
-          itemBuilder: itemBuilder,
-          separatorBuilder: separatorBuilder,
-          itemCount: itemCount,
+          itemBuilder: (_, index) => Container(),
+          separatorBuilder: (_, __) => Divider(),
+          itemCount: 0,
         ),
       )
     ]);
