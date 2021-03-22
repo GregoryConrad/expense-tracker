@@ -13,9 +13,7 @@ class Expense {
   Expense.fromDocument(DocumentSnapshot document)
       : this._fromMap(document.data() ?? {}, document.reference);
 
-  Future<void> delete() {
-    return document.delete();
-  }
+  Future<void> delete() => document.delete();
 
   Future<void> updateWith({double? amount, String? name, String? description}) {
     return document.update({

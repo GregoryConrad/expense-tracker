@@ -4,7 +4,12 @@ final _auth = FirebaseAuth.instance;
 
 String get currentUid => _auth.currentUser?.uid ?? '';
 
+Stream<bool> get authSteam =>
+    _auth.authStateChanges().map((user) => user != null);
+
 Future<void> signOut() => _auth.signOut();
 
-Stream<String?> get authSteam =>
-    _auth.authStateChanges().map((user) => user?.uid);
+Future<UserCredential> signIn() {
+  final googleProvider = GoogleAuthProvider();
+  return _auth.signInWithPopup(googleProvider);
+}
