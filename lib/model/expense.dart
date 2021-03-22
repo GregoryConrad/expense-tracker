@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'dart:ui' show Color;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 

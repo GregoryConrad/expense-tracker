@@ -1,6 +1,6 @@
-import 'package:expense_tracker/auth_repository.dart';
-import 'package:expense_tracker/data_repository.dart';
-import 'package:expense_tracker/expense.dart';
+import 'package:expense_tracker/model/auth_repository.dart';
+import 'package:expense_tracker/model/data_repository.dart';
+import 'package:expense_tracker/model/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -66,15 +66,26 @@ class HomeWidget extends StatelessWidget {
   }
 
   Future<bool> _showAddExpenseDialog(BuildContext context) async {
-    double amount = 0;
-    String name = '', description = '';
+    String name = '', description = '', amount = '0';
     return await showDialog(
       context: context,
       builder: (_) => AlertDialog(
         title: Text('Add Expense'),
         content: Column(children: [
-          TextField(),
-          // todo all the text inputs
+          TextFormField(
+            decoration: const InputDecoration(labelText: 'Name'),
+            onChanged: (s) => name = s,
+          ),
+          TextFormField(
+            decoration: const InputDecoration(labelText: 'Description'),
+            onChanged: (s) => description = s,
+          ),
+          TextFormField(
+            initialValue: amount,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(labelText: 'Amount'),
+            onChanged: (s) => amount = s,
+          )
         ]),
         actions: [
           TextButton(
@@ -83,9 +94,14 @@ class HomeWidget extends StatelessWidget {
           ),
           TextButton(
             child: Text('CREATE'),
-            onPressed: () {
+            onPressed: () async {
               Navigator.pop(context, true);
-              // todo add via data repo. make sure to add uid field
+              final added = await createExpense(
+                  name, description, double.tryParse(amount) ?? 0);
+              if (!added) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Failed to create the expense')));
+              }
             },
           ),
         ],
