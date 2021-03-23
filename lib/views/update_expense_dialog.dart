@@ -48,11 +48,6 @@ class _UpdateExpenseDialogState extends State<UpdateExpenseDialog> {
 
   ChoiceChip _createChoice(_UpdateState type) {
     return ChoiceChip(
-      // Chip selected text color is bad, so this fixes it based on theme
-      // labelStyle: Theme.of(context).chipTheme.labelStyle.copyWith(
-      //       color: Theme.of(context).chipTheme.labelStyle.color,
-      //     ),
-      // todo remove above
       label: Text(type.label),
       selected: currState == type,
       onSelected: (selected) {
@@ -66,12 +61,16 @@ class _UpdateExpenseDialogState extends State<UpdateExpenseDialog> {
     return AlertDialog(
       title: Text('Modify ${expense.name}'),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
-        Wrap(spacing: 4, children: [
-          _createChoice(_UpdateState.name),
-          _createChoice(_UpdateState.description),
-          _createChoice(_UpdateState.amount),
-        ]),
+        ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 256),
+          child: Wrap(spacing: 4, alignment: WrapAlignment.center, children: [
+            _createChoice(_UpdateState.name),
+            _createChoice(_UpdateState.description),
+            _createChoice(_UpdateState.amount),
+          ]),
+        ),
         TextFormField(
+          key: ValueKey(currState),
           initialValue: currField,
           onChanged: (s) => currField = s,
           decoration: InputDecoration(labelText: currState.label),
