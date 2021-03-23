@@ -1,8 +1,8 @@
 import 'package:expense_tracker/model/auth_repository.dart';
 import 'package:expense_tracker/model/data_repository.dart';
 import 'package:expense_tracker/model/expense.dart';
+import 'package:expense_tracker/model/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,7 +23,7 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(children: [
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
           Text('You need to be signed in to use this application'),
           TextButton.icon(
             onPressed: signIn,
@@ -78,7 +78,7 @@ class HomeWidget extends StatelessWidget {
       context: context,
       builder: (_) => AlertDialog(
         title: Text('Add Expense'),
-        content: Column(children: [
+        content: Column(mainAxisSize: MainAxisSize.min, children: [
           TextFormField(
             decoration: const InputDecoration(labelText: 'Name'),
             onChanged: (s) => name = s,
@@ -174,7 +174,7 @@ class BodyWidget extends StatelessWidget {
           child: Card(
             child: Center(
               child: Text(
-                'There are ${totalAmount.toStringAsFixed(2)} total expenses',
+                'There are ${totalAmount.toCurrency()} total expenses',
               ),
             ),
           ),
@@ -236,7 +236,7 @@ class ExpenseListTile extends StatelessWidget {
         title: Text(expense.name),
         subtitle:
             expense.description.isEmpty ? null : Text(expense.description),
-        trailing: Text(NumberFormat.simpleCurrency().format(expense.amount)),
+        trailing: Text(expense.amount.toCurrency()),
         onLongPress: () => _openInfoDialog(context),
       ),
     );
