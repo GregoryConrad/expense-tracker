@@ -63,11 +63,16 @@ class _UpdateExpenseDialogState extends State<UpdateExpenseDialog> {
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         ConstrainedBox(
           constraints: const BoxConstraints(minWidth: 256),
-          child: Wrap(spacing: 4, alignment: WrapAlignment.center, children: [
-            _createChoice(_UpdateState.name),
-            _createChoice(_UpdateState.description),
-            _createChoice(_UpdateState.amount),
-          ]),
+          child: Wrap(
+            spacing: 4,
+            runSpacing: 4,
+            alignment: WrapAlignment.center,
+            children: [
+              _createChoice(_UpdateState.name),
+              _createChoice(_UpdateState.description),
+              _createChoice(_UpdateState.amount),
+            ],
+          ),
         ),
         TextFormField(
           key: ValueKey(currState),

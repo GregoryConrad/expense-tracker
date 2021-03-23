@@ -7,11 +7,14 @@ class LoginWidget extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Text(
-            'You need to be signed in to use this application',
-            textScaleFactor: 1.5,
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              'You need to be signed in to use this application',
+              textAlign: TextAlign.center,
+              textScaleFactor: 1.5,
+            ),
           ),
-          SizedBox(height: 8),
           TextButton.icon(
             onPressed: signIn,
             icon: Icon(Icons.person),
