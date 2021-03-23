@@ -94,7 +94,9 @@ class HomeWidget extends StatelessWidget {
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(labelText: 'Amount'),
             onChanged: (s) => amount = s,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[\d.-]')),
+            ],
           ),
         ]),
         actions: [
@@ -248,6 +250,7 @@ class ExpenseListTile extends StatelessWidget {
   Future<bool> _openDeleteConfirmation(BuildContext context) async {
     return await showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (_) => AlertDialog(
         title: Text('Delete ${expense.name}?'),
         actions: [
