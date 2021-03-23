@@ -25,3 +25,7 @@ However, if I needed additional complexity, I would have also used (as needed):
 - [Bloc](https://pub.dev/packages/flutter_bloc): For very predictable and easy to test state management that excels in complex scenarios that are well-modeled with a state machine
   - Note: I typically find Bloc to be overkill (lots of boilerplate), but it has its place in specific situations
 - [Flutter Hooks](https://pub.dev/packages/flutter_hooks): Although I have not personally tried this library, the concept (borrowed from React) is great
+
+## Continuous Deployment
+This project also automates deployment to Firebase Hosting on pushes to master through GitHub Actions.
+If you are looking for CD with Flutter, see [deploy.yml](.github/workflows/deploy.yml) for a starting point.
