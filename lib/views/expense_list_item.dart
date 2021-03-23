@@ -1,5 +1,6 @@
 import 'package:expense_tracker/model/expense.dart';
 import 'package:expense_tracker/model/extensions.dart';
+import 'package:expense_tracker/views/update_expense_dialog.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseListTile extends StatelessWidget {
@@ -114,11 +115,10 @@ class ExpenseListTile extends StatelessWidget {
     );
   }
 
-  Future<void> _openUpdateDialog(BuildContext context) {
-    // todo
-    return showDialog(
+  Future<void> _openUpdateDialog(BuildContext context) async {
+    return await showDialog(
       context: context,
-      builder: (_) => Container(),
+      builder: (_) => UpdateExpenseDialog(expense: expense),
     );
   }
 }
