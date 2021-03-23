@@ -3,6 +3,7 @@ import 'package:expense_tracker/model/data_repository.dart';
 import 'package:expense_tracker/model/expense.dart';
 import 'package:expense_tracker/model/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -85,6 +86,7 @@ class HomeWidget extends StatelessWidget {
           ),
           TextFormField(
             decoration: const InputDecoration(labelText: 'Description'),
+            maxLines: 3,
             onChanged: (s) => description = s,
           ),
           TextFormField(
@@ -92,7 +94,8 @@ class HomeWidget extends StatelessWidget {
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(labelText: 'Amount'),
             onChanged: (s) => amount = s,
-          )
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          ),
         ]),
         actions: [
           TextButton(
@@ -261,8 +264,8 @@ class ExpenseListTile extends StatelessWidget {
     );
   }
 
-  Future<void> _openInfoDialog(BuildContext context) {
-    return showDialog(
+  Future<void> _openInfoDialog(BuildContext context) async {
+    return await showDialog(
       context: context,
       builder: (_) => AlertDialog(
         title: Text('${expense.name} Options'),
