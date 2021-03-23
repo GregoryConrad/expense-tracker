@@ -1,21 +1,21 @@
 # Expense Tracker
-** Created by Gregory Conrad **
+**Created by Gregory Conrad**
 
 ## Description
 A simple personal finance expense tracker built with Flutter that uses Firebase as the back end.
-Specifically, Firebase's Authentication and Firestore are used.
+Specifically, Firebase Authentication and Firestore are used.
 
 ## Purpose
 I created this project for my own personal use, but due to its simple nature,
-it serves as well-rounded reference/example code for using Flutter with Firebase.
+it serves as good reference/example code for using Flutter with Firebase.
 Thus, if you are new to Flutter/Firebase and are looking for a well-structured example, dive in!
 You can easily take the concepts used in this application and apply it to a much more complex application.
 
 ## State Management
 State management is handled exclusively via Firebase (it is very powerful!) in this project.
 
-This application is nothing fancy; it simply shows your expenses and adds them up,
-so no complex state management was needed.
+This application is nothing fancy and did not require any complex state management;
+it simply shows your expenses and adds them up.
 However, if I needed additional complexity, I would have also used (as needed):
 - [GetIt](https://pub.dev/packages/get_it): Great if you have ever used DI in the past
   - Note: The data_repository and auth_repository dart files in this project were meant to be abstracted with GetIt, but I did not for simplicity
