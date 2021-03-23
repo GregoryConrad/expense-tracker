@@ -22,14 +22,16 @@ class LoginWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text('You need to be signed in to use this application'),
-        TextButton.icon(
-          onPressed: signIn,
-          icon: Icon(Icons.person_pin),
-          label: Text('GOOGLE SIGN IN'),
-        ),
-      ]),
+      body: Center(
+        child: Column(children: [
+          Text('You need to be signed in to use this application'),
+          TextButton.icon(
+            onPressed: signIn,
+            icon: Icon(Icons.person),
+            label: Text('GOOGLE SIGN IN'),
+          ),
+        ]),
+      ),
     );
   }
 }
@@ -48,8 +50,13 @@ class HomeWidget extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.delete_forever),
                 onPressed: () => _showRemoveAllConfirmation(context, expenses),
+                tooltip: 'Delete All Expenses',
               ),
-              IconButton(icon: Icon(Icons.person_pin), onPressed: signOut),
+              IconButton(
+                icon: Icon(Icons.account_circle),
+                onPressed: signOut,
+                tooltip: 'Sign Out',
+              ),
             ],
           ),
           floatingActionButton: FloatingActionButton(
