@@ -6,7 +6,8 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A simple expense tracker">
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -27,6 +28,17 @@
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBme_4rQo3UTjYsHfi7lCuqE5nzGtAuGGk",
+      authDomain: "gsconrad-expense-tracker.firebaseapp.com",
+      projectId: "gsconrad-expense-tracker",
+      storageBucket: "gsconrad-expense-tracker.appspot.com",
+      messagingSenderId: "397765193480",
+      appId: "1:397765193480:web:662734fcb67ae73c5386bd",
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
