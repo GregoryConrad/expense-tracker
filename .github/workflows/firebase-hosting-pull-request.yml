@@ -1,0 +1,22 @@
+name: Deploy PR to Firebase Hosting Preview Channel
+
+on:
+  pull_request:
+
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.4.0
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GSCONRAD_EXPENSE_TRACKER }}'
+          expires: 30d
+          projectId: gsconrad-expense-tracker
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
