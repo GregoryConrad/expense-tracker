@@ -10,6 +10,7 @@ I created this project for my own personal use, but due to its simple nature,
 it serves as good reference/example code for using Flutter with Firebase.
 Thus, if you are new to Flutter/Firebase and are looking for a well-structured example, dive in!
 You can easily take the concepts used in this application and apply it to a much more complex application.
+The Android and iOS runners have not been touched, but the web runner is functional & working.
 
 ## State Management
 State management is handled exclusively via Firebase (it is very powerful!) in this project.
@@ -27,5 +28,5 @@ However, if I needed additional complexity, I would have also used (as needed):
 - [Flutter Hooks](https://pub.dev/packages/flutter_hooks): Although I have not personally tried this library, the concept (borrowed from React) is great
 
 ## Continuous Deployment
-This project also automates deployment to Firebase Hosting on pushes to master through GitHub Actions.
-If you are looking for CD with Flutter, see [deploy.yml](.github/workflows/deploy.yml) for a starting point.
+This project also automates deployment to Firebase Hosting on pushes to master and pull requests through GitHub Actions.
+If you are looking for CD with Flutter, see [.github/workflows/](.github/workflows/) for a starting point.
